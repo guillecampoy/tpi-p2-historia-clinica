@@ -1,35 +1,61 @@
-# Trabajo Final Integrador Programación 2 – Historia Clínica 
-(Paciente → HistoriaClinica)
+<p align="center">
+  <img alt="logo" src="https://img.shields.io/badge/TFI%20P2-Historia%20Cl%C3%ADnica-0A66C2?style=for-the-badge" />
+</p>
+
+<h1 align="center">Trabajo Final Integrador Programación 2 – Historia Clínica</h1>
+
+<p align="center">
+  Aplicación Java con relación <b>1→1 unidireccional</b> (Paciente A → HistoriaClinica B),
+  DAO + Service, MySQL 8, Gradle, y baja lógica 🗂️
+</p>
+
+<p align="center">
+  <!-- Java -->
+  <img alt="Java" src="https://img.shields.io/badge/Java-21-007396?style=flat-square&logo=openjdk&logoColor=white" />
+  <!-- Gradle -->
+  <img alt="Gradle" src="https://img.shields.io/badge/Gradle-8.x-02303A?style=flat-square&logo=gradle&logoColor=white" />
+  <!-- MySQL -->
+  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.x-4479A1?style=flat-square&logo=mysql&logoColor=white" />
+  <!-- License -->
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
+  </a>
+</p>
 
 Repositorio de la entrega integradora de **Programación 2**. Implementa una relación **1→1 unidireccional** de `Paciente` (A) hacia `HistoriaClinica` (B), con persistencia en **MySQL 8**, acceso vía **DAO**, orquestación en **Service** (transacciones), **baja lógica** por campo `eliminado` y scripts SQL de creación/seed/validación.
 
 ---
 > **Cátedra:** Programación II  
-> **Alumnos:** 
-> * SANTIAGO CAICIIA MASSELLO
-> * GUILLERMO CAMPOY
-> * LUIS CISNEROS
-> * NICOLAS ALBERTO COLMAN
-> 
 > **Docente:** GIULIANO ESPEJO  
 > **Año/Cuat.**: 2025 / 2C
 
+## 👥 Integrantes
 
-## Tabla de contenidos
-- [Contexto y Alcance](#contexto-y-alcance)
-- [Estrategia de Modelado y Borrado](#estrategia-de-modelado-y-borrado)
-- [Estructura de Proyecto](#estructura-de-proyecto)
-- [Requisitos Técnicos](#requisitos-técnicos)
-- [Base de Datos: Creación y Datos](#base-de-datos-creación-y-datos)
-- [Ejecución de la App](#ejecución-de-la-app)
-- [Consultas de Validación](#consultas-de-validación)
-- [Checklist de Entregables](#checklist-de-entregables)
-- [Resolución de Problemas Comunes](#resolución-de-problemas-comunes)
-- [Licencia](#licencia)
+| Nombre              | usuario github |
+|---------------------|----------------------|
+| Luis Cisneros       | [@luiscisneros356](https://github.com/luiscisneros356) |
+| Nicolás Colman      | [@ncolman94](https://github.com/ncolman94) |
+| Santiago Caiciia Massello| [@scaiciia](https://github.com/scaiciia) |
+| Guillermo Campoy    | [@guillecampoy](https://github.com/guillecampoy) |
 
 ---
 
-## Contexto y Alcance
+## Índice
+- [📝 Contexto y Alcance](#-contexto-y-alcance)
+- [🛠️ Tech Stack](#-tech-stack)
+- [📐 Estrategia de Modelado y Borrado](#-estrategia-de-modelado-y-borrado)
+- [📦 Estructura](#-estructura)
+- [🧪 Requisitos Técnicos](#-requisitos-técnicos)
+- [🗄️ Base de datos](#-base-de-datos)
+- [🚀 Ejecutar](#-ejecutar)
+- [✅ Validaciones](#-validaciones)
+- [🧰 Troubleshooting](#-troubleshooting)
+- [📚 Documentación y Entregables](#-documentación-y-entregables)
+- [📄 Licencia](#-licencia)
+
+---
+
+## 📝 Contexto y Alcance
 
 - Dominio: **Historia Clínica** con entidades principales:
     - **Paciente (A)**: `id`, `dni` (único), `nombre`, `apellido`, `fecha_nacimiento`, `eliminado`.
@@ -39,8 +65,14 @@ Repositorio de la entrega integradora de **Programación 2**. Implementa una rel
 - Objetivo: demostrar diseño correcto, separación por capas, persistencia limpia, y consistencia de datos.
 
 ---
+## 🛠️ Tech Stack
 
-## Estrategia de Modelado y Borrado
+- **Java 21** · **Gradle 8.x** · JDBC
+- **MySQL 8** (charset `utf8mb4`)
+- Patrón **DAO** + capa **Service** (transacciones, orquestación)
+- **Baja lógica** por campo `eliminado` en A y B
+---
+## 📐 Estrategia de Modelado y Borrado
 
 - **Clave foránea única en B (`historia_clinica.paciente_id`)** para garantizar 1→1.
 - **Unicidades**: `paciente.dni`, `historia_clinica.nro_historia` y `historia_clinica.paciente_id`.
@@ -49,7 +81,7 @@ Repositorio de la entrega integradora de **Programación 2**. Implementa una rel
 
 ---
 
-## Estructura de Proyecto
+## 📦 Estructura de Proyecto
 
 ```
 tpi-p2-historia-clinica/
@@ -90,7 +122,7 @@ tpi-p2-historia-clinica/
 ```
 ---
 
-## Requisitos Técnicos
+## 🧪️ Requisitos Técnicos
 
 - JDK **21** (recomendado).
 - **MySQL 8.x**.
@@ -99,7 +131,7 @@ tpi-p2-historia-clinica/
 
 ---
 
-## Base de Datos: Creación y Datos
+## 🗄️ Base de Datos: Creación y Datos
 
 Scripts incluidos en `./sql`:
 
@@ -119,7 +151,7 @@ mysql -u root -p < sql/03_validate.sql
 
 ---
 
-## Ejecución de la App
+## 🚀 Ejecución de la App
 WIP / TBD
 1. Configurar `src/main/resources/application.properties`:
    ```properties
@@ -135,7 +167,7 @@ Otras recomendaciones
 
 ---
 
-## Consultas de Validación
+## ✅ Consultas de Validación
 
 Incluidas en `sql/03_validate.sql` (porción):
 
@@ -161,7 +193,7 @@ WHERE p.dni = '30111222';
 ```
 
 (WIP)
-## Resolución de Problemas Comunes
+## 🧰 Resolución de Problemas Comunes
 
 - **Error de zona horaria**: agregar `serverTimezone=UTC` en la URL JDBC.
 - **Handshake/SSL**: `allowPublicKeyRetrieval=true&useSSL=false` en desarrollo local.
@@ -171,6 +203,14 @@ WHERE p.dni = '30111222';
 
 ---
 
-## Licencia
+## 📚 Documentación y Entregables
 
-TBD
+- **UML** de clases en `docs/uml/`.
+- **Informe** en `docs/informe/`.
+- **Video** mostrando CRUD, relación 1→1, búsqueda por DNI, baja lógica y un rollback.
+- **SQL** completos en `sql/`.
+
+---
+
+## 📄 Licencia
+MIT
