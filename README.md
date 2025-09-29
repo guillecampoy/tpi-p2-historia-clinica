@@ -1,9 +1,19 @@
-# TPI P2 – Historia Clínica (Paciente → HistoriaClinica)
+# Trabajo Final Integrador Programación 2 – Historia Clínica 
+(Paciente → HistoriaClinica)
 
 Repositorio de la entrega integradora de **Programación 2**. Implementa una relación **1→1 unidireccional** de `Paciente` (A) hacia `HistoriaClinica` (B), con persistencia en **MySQL 8**, acceso vía **DAO**, orquestación en **Service** (transacciones), **baja lógica** por campo `eliminado` y scripts SQL de creación/seed/validación.
 
-
 ---
+> **Cátedra:** Programación II  
+> **Alumnos:** 
+> * SANTIAGO CAICIIA MASSELLO
+> * GUILLERMO CAMPOY
+> * LUIS CISNEROS
+> * NICOLAS ALBERTO COLMAN
+> 
+> **Docente:** GIULIANO ESPEJO  
+> **Año/Cuat.**: 2025 / 2C
+
 
 ## Tabla de contenidos
 - [Contexto y Alcance](#contexto-y-alcance)
@@ -46,7 +56,7 @@ tpi-p2-historia-clinica/
 ├─ README.md
 ├─ docs/
 │  ├─ uml/
-│  │  └─ diagrama-clases.png
+│  │  └─ TBD.png  # Diagramas UML necesarios
 │  └─ informe/
 │     └─ informe.pdf
 ├─ sql/
@@ -78,12 +88,6 @@ tpi-p2-historia-clinica/
 │        └─ application.properties  # url, user, pass de MySQL
 └─ build.gradle
 ```
-
-**Notas**:
-- El menú debe exponer CRUD y búsqueda por DNI, respetando baja lógica.
-- La capa `service/` orquesta transacciones y protege la invariante 1→1.
-- En `resources/` parametrizá conexión a MySQL.
-
 ---
 
 ## Requisitos Técnicos
@@ -116,24 +120,24 @@ mysql -u root -p < sql/03_validate.sql
 ---
 
 ## Ejecución de la App
-WIP
-1. Configurá `src/main/resources/application.properties`:
+WIP / TBD
+1. Configurar `src/main/resources/application.properties`:
    ```properties
    db.url=jdbc:mysql://localhost:3306/tpi_historia_clinica?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
    db.user=root
    db.password=tu_password
    ```
-2. Construí y ejecutá:
+2. Construcción y ejecución:
     - **Gradle**: `./gradlew run`
 
-WIP
-> Sugerencia: usar try-with-resources y `PreparedStatement` en DAO, commit/rollback en `Service` para operaciones compuestas (p. ej., crear Paciente + Historia).
+Otras recomendaciones
+> TBD.
 
 ---
 
 ## Consultas de Validación
 
-Incluidas en `sql/03_validate.sql` (extracto):
+Incluidas en `sql/03_validate.sql` (porción):
 
 ```sql
 -- Pacientes activos con su historia clínica
@@ -159,14 +163,14 @@ WHERE p.dni = '30111222';
 (WIP)
 ## Resolución de Problemas Comunes
 
-- **Error de zona horaria**: agregá `serverTimezone=UTC` en la URL JDBC.
+- **Error de zona horaria**: agregar `serverTimezone=UTC` en la URL JDBC.
 - **Handshake/SSL**: `allowPublicKeyRetrieval=true&useSSL=false` en desarrollo local.
-- **Conector MySQL**: asegurate de usar `jdbc:mysql://...`, *no* una URL HTTP.
+- **Conector MySQL**: asegurarse de usar `jdbc:mysql://...`, *no* una URL HTTP.
 - **Permisos**: usuario con privilegios para `CREATE DATABASE` y `FOREIGN KEY`.
-- **UNICODE**: la base usa `utf8mb4`/`utf8mb4_unicode_ci` (emojis/caracteres extendidos).
+- **UNICODE**: la base usa `utf8mb4`/`utf8mb4_unicode_ci`.
 
 ---
 
 ## Licencia
 
-MIT
+TBD
